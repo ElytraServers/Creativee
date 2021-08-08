@@ -14,8 +14,9 @@ Creativee 是一个 Bukkit 插件，用于创造服、生存建筑服。
 
 1. 在 [这里](https://github.com/ElytraServers/Creativee/release/latest) 中下载最新版本的 Creativee。
 2. 在 [这里](https://github.com/ElytraServers/ElytraApi2/release/latest) 中下载最新版本的 ElytraApi2。
-3. 将上面的两个拖入支持 Bukkit 插件的服务器的 `./plugins` 文件夹中。
-4. 启动。
+3. 在 [这里](https://github.com/MilkBowl/Vault/releases/latest) 中下载最新版本的 Vault。
+4. 将上面的两个拖入支持 Bukkit 插件的服务器的 `./plugins` 文件夹中。
+5. 启动。
 
 #### 配置插件
 
