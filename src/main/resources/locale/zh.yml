@@ -1,0 +1,28 @@
+elytra:
+  creativee:
+    loading:
+      error:
+        missing-economy: "丢失经济插件，临时飞行设置为免费"
+    safemode:
+      player-enter-mode: "§7在这里睡觉会引起爆炸。"
+    tempofly:
+      buy-success: "§7你用 %1$s 购买了 %2$s 刻的飞行时间。"
+      no-cost-success: "§7你获得了 %1$s 刻的飞行时间。"
+      remains: "§7你还有 %1$s 刻的飞行时间。"
+      gift:
+        sender: "§7你用了 %1$s 给 %2$s 买了 %3$s 刻的飞行时间。"
+        receiver: "§7你获得了来自 %2$s 花了 %3$s 给你买的 %1$s 刻的飞行时间。对他/她说声谢谢！"
+        receiver-not-found: "§7找不到接收者。"
+        remains: "§7接收者还有额外的临时飞行时长。"
+      gift-no-cost:
+        sender: "§7你给 %1$s 送了 %2$s 刻的飞行时间。"
+        receiver: "§7你获得了来自 %2$s 送你的 %1$s 刻的飞行时间。"
+    command:
+      help:
+        0: "====> §a§lCreativee§r <===="
+        1: "§b/creativee tempofly §r- 购买临时飞行"
+        2: "§b/creativee tempofly <player> §r- 给别人送一个临时飞行"
+        3: "§b/creativee reload §r- 重载插件<WIP>"
+      tempofly:
+        player-only: "§c这个指令只有玩家可用！"
+      reload: "§7重载成功。"

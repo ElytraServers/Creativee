@@ -1,0 +1,28 @@
+elytra:
+  creativee:
+    loading:
+      error:
+        missing-economy: "Missing Economy plugin(s). Tempofly is now FREE."
+    safemode:
+      player-enter-mode: "Sleep here is not possible."
+    tempofly:
+      buy-success: "§7You've cost %1$s for %2$s tick(s) fly."
+      no-cost-success: "§7You've gain %1$s tick(s) fly."
+      remains: "§7You have %1$s more tick(s) to fly."
+      gift:
+        sender: "§7You've cost %1$s for %2$s's %3$s ticks(s) fly."
+        receiver: "§7You've gain %1$s tick(s) fly from %2$s for %3$s. Say thank you to he/she!"
+        receiver-not-found: "§7The receiver is not found."
+        remains: "§7The receiver is still Tempoflying."
+      gift-no-cost:
+        sender: "§7You've sent %1$s %2$s ticks(s) fly."
+        receiver: "§7You've gain %1$s tick(s) fly from %2$s."
+    command:
+      help:
+        0: "====> §a§lCreativee§r <===="
+        1: "§b/creativee tempofly §r- Buy Tempofly."
+        2: "§b/creativee tempofly <player> §r- Give other a Tempofly."
+        3: "§b/creativee reload §r- Reload Creativee.<WIP>"
+      tempofly:
+        player-only: "§cThis command is for players only."
+      reload: "§7Reloaded."

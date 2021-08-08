@@ -1,0 +1,8 @@
+name: Creativee
+version: ${project.version}
+main: cn.elytra.code.creativee.Creativee
+api-version: 1.17
+depend: ["ElytraApi", "Vault"]
+commands:
+  creativee:
+    usage: "/creativee"

@@ -1,0 +1,3 @@
+creativee:
+  # Switch to SafeMode [default: true]
+  SafeMode: true
