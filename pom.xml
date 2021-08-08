@@ -6,7 +6,7 @@
 
     <groupId>cn.elytra.code</groupId>
     <artifactId>creativee</artifactId>
-    <version>1.0-rc</version>
+    <version>1.0-pre</version>
     <packaging>jar</packaging>
 
     <name>Creativee</name>

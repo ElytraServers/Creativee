@@ -59,8 +59,10 @@ public final class Creativee extends JavaPlugin implements Listener {
 	}
 
 	private void onReload() {
-		reloadConfig();
+		saveDefaultConfig();
 		safeMode.enable = getConfig().getBoolean("creativee.SafeMode", true);
+		tempofly.setCost(getConfig().getDouble("creativee.TempoFly.cost"));
+		tempofly.setDuration(getConfig().getLong("creativee.TempoFly.duration"));
 	}
 
 	private void setupLocale() {

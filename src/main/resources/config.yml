@@ -1,3 +1,10 @@
 creativee:
   # Switch to SafeMode [default: true]
   SafeMode: true
+
+  # Temporary Fly Settings
+  TempoFly:
+    # The Cost
+    cost: 100
+    # The Duration(Unit: GameTick)
+    duration: 1200
