@@ -3,6 +3,8 @@
 <image src="https://img.shields.io/github/license/ElytraServers/Creativee?label=License&style=flat-square"></image>
 <image src="https://img.shields.io/github/stars/ElytraServers/Creativee?label=Stars&style=flat-square"></image>
 <image src="https://img.shields.io/badge/author-Taskeren-red?style=flat-square"></image>
+<a href="https://github.com/ElytraServers/ElytraApi2"><image src="https://img.shields.io/badge/dependsOn-ElytraApi2-blue?style=flat-square"></image></a>
+<a href="https://github.com/MilkBowl/Vault"><image src="https://img.shields.io/badge/dependsOn-Vault-blue?style=flat-square"></image></a>
 
 ## 插件介绍
 
