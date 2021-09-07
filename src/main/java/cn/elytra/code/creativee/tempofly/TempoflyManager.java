@@ -1,5 +1,6 @@
 package cn.elytra.code.creativee.tempofly;
 
+import cn.elytra.code.api.localeV1.PluginLocaleManagerV1;
 import cn.elytra.code.creativee.Creativee;
 import com.google.common.collect.Maps;
 import net.milkbowl.vault.economy.EconomyResponse;
@@ -96,16 +97,16 @@ public class TempoflyManager implements Listener {
 
 	public void buyTempofly(CommandSender coster, Player flyer) {
 		if(flyer == null) {
-			coster.sendMessage(creativee.locale.format("elytra.creativee.tempofly.gift.receiver-not-found"));
+			PluginLocaleManagerV1.sendMessage(creativee, coster, "elytra.creativee.tempofly.gift.receiver-not-found");
 			return;
 		}
 
 		if(tempoflyMap.containsKey(flyer.getUniqueId())) {
 			if(coster == flyer) {
-				coster.sendMessage(creativee.locale.format("elytra.creativee.tempofly.remains",
-						tempoflyMap.get(flyer.getUniqueId()) - currentTick));
+				PluginLocaleManagerV1.sendMessage(creativee, coster,
+						"elytra.creativee.tempofly.remains", tempoflyMap.get(flyer.getUniqueId()) - currentTick);
 			} else {
-				coster.sendMessage(creativee.locale.format("elytra.creativee.tempofly.gift.remains"));
+				PluginLocaleManagerV1.sendMessage(creativee, coster, "elytra.creativee.tempofly.gift.remains");
 			}
 			return;
 		}
@@ -127,21 +128,21 @@ public class TempoflyManager implements Listener {
 			tempoflyMap.put(flyer.getUniqueId(), tickToDisable);
 			if(coster == flyer) { // 正常情况
 				if (!noCost) {
-					flyer.sendMessage(creativee.locale.format("elytra.creativee.tempofly.buy-success", getCost(), getDuration()));
+					PluginLocaleManagerV1.sendMessage(creativee, flyer, "elytra.creativee.tempofly.buy-success", getCost(), getDuration());
 				} else {
-					flyer.sendMessage(creativee.locale.format("elytra.creativee.tempofly.no-cost-success", getDuration()));
+					PluginLocaleManagerV1.sendMessage(creativee, flyer, "elytra.creativee.tempofly.no-cost-success", getDuration());
 				}
 			} else { // 帮买情况
 				if(!noCost) {
-					coster.sendMessage(creativee.locale.format("elytra.creativee.tempofly.gift.sender",
-							getCost(), flyer.getDisplayName(), getDuration()));
-					flyer.sendMessage(creativee.locale.format("elytra.creativee.tempofly.gift.receiver",
-							getDuration(), coster.getName(), getCost()));
+					PluginLocaleManagerV1.sendMessage(creativee, coster, "elytra.creativee.tempofly.gift.sender",
+							getCost(), flyer.getDisplayName(), getDuration());
+					PluginLocaleManagerV1.sendMessage(creativee, flyer, "elytra.creativee.tempfly.gift.receiver",
+							getDuration(), coster.getName(), getCost());
 				} else {
-					coster.sendMessage(creativee.locale.format("elytra.creativee.tempofly.gift-no-cost.sender",
-							flyer.getDisplayName(), getDuration()));
-					flyer.sendMessage(creativee.locale.format("elytra.creativee.tempofly.gift-no-cost.receiver",
-							getDuration(), coster.getName()));
+					PluginLocaleManagerV1.sendMessage(creativee, coster, "elytra.creativee.tempofly.gift-no-cost.sender",
+							flyer.getDisplayName(), getDuration());
+					PluginLocaleManagerV1.sendMessage(creativee, flyer, "elytra.creativee.tempfly.gift-no-cost.receiver",
+							getDuration(), coster.getName());
 				}
 			}
 		}

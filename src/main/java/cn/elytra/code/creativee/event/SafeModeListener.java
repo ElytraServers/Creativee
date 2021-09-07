@@ -1,5 +1,6 @@
 package cn.elytra.code.creativee.event;
 
+import cn.elytra.code.api.localeV1.PluginLocaleManagerV1;
 import cn.elytra.code.creativee.Creativee;
 import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.Material;
@@ -43,7 +44,7 @@ public class SafeModeListener implements Listener {
 		if(!enable) return;
 		if(event.getBedEnterResult() == PlayerBedEnterEvent.BedEnterResult.NOT_POSSIBLE_HERE) {
 			event.setCancelled(true);
-			event.getPlayer().sendMessage(creativee.locale.format("elytra.creativee.safemode.player-enter-bed"));
+			PluginLocaleManagerV1.sendMessage(creativee, event.getPlayer(), "elytra.creativee.safemode.player-enter-bed");
 		}
 	}
 

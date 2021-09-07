@@ -1,9 +1,7 @@
 package cn.elytra.code.creativee;
 
-import cn.elytra.code.api.locale.ILocale;
-import cn.elytra.code.api.locale.LocaleService;
-import cn.elytra.code.api.locale.LocaleSetupException;
-import cn.elytra.code.api.locale.SuggestedLanguageChangedEvent;
+import cn.elytra.code.api.localeV1.FormatLogger;
+import cn.elytra.code.api.localeV1.PluginLocaleManagerV1;
 import cn.elytra.code.creativee.event.SafeModeListener;
 import cn.elytra.code.creativee.tempofly.TempoflyManager;
 import com.google.common.collect.Lists;
@@ -11,7 +9,6 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -22,7 +19,9 @@ import java.util.stream.Collectors;
 
 public final class Creativee extends JavaPlugin implements Listener {
 
-	public ILocale locale = ILocale.EMPTY_LOCALE;
+	public PluginLocaleManagerV1 localeMgr;
+
+	public FormatLogger logger;
 
 	@Nullable
 	public Economy economy;
@@ -67,16 +66,10 @@ public final class Creativee extends JavaPlugin implements Listener {
 
 	private void setupLocale() {
 		if(getServer().getPluginManager().getPlugin("ElytraApi") != null) {
-			LocaleService ls = getServer().getServicesManager().getRegistration(LocaleService.class).getProvider();
-			try {
-				this.locale = ls.loadLocaleYaml(this,
-						"locale/"+ls.getSuggestedLanguage()+".yml");
-			} catch (LocaleSetupException setup) {
-				if(LocaleSetupException.TYPE_FILE_MISSING == setup.getExceptionType()) {
-					getLogger().warning("Locale file is missing! Report this to the Issues in Github repo.");
-				}
-				throw setup;
-			}
+			localeMgr = new PluginLocaleManagerV1(this, "en", "zh");
+			localeMgr.loadAndRegisterLocaleYaml("en");
+			localeMgr.loadAndRegisterLocaleYaml("zh");
+			logger = localeMgr.getFormatLogger("en");
 		} else {
 			throw new IllegalStateException("Creativee requires ElytraApi2.");
 		}
@@ -87,7 +80,7 @@ public final class Creativee extends JavaPlugin implements Listener {
 			economy = getServer().getServicesManager().getRegistration(Economy.class).getProvider();
 			if(economy == null) {
 				tempofly.setNoCost();
-				getLogger().warning(locale.format("elytra.creativee.loading.error.missing-economy"));
+				logger.warning("elytra.creativee.loading.error.missing-economy");
 			}
 		}
 	}
@@ -102,12 +95,12 @@ public final class Creativee extends JavaPlugin implements Listener {
 						if(sender instanceof Player) {
 							tempofly.buyTempofly(((Player) sender));
 						} else {
-							sender.sendMessage(locale.format("elytra.creativee.command.tempofly.player-only"));
+							PluginLocaleManagerV1.sendMessage(this, sender, "elytra.creativee.command.tempofly.player-only");
 						}
 						return true;
 					} else if(sub.equalsIgnoreCase("reload")) {
 						onReload();
-						sender.sendMessage(locale.format("elytra.creativee.command.reload"));
+						PluginLocaleManagerV1.sendMessage(this, sender, "elytra.creativee.command.reload");
 						return true;
 					}
 					break;
@@ -120,10 +113,10 @@ public final class Creativee extends JavaPlugin implements Listener {
 					}
 					break;
 				default:
-					sender.sendMessage(locale.format("elytra.creativee.command.help.0"));
-					sender.sendMessage(locale.format("elytra.creativee.command.help.1"));
-					sender.sendMessage(locale.format("elytra.creativee.command.help.2"));
-					sender.sendMessage(locale.format("elytra.creativee.command.help.3"));
+					PluginLocaleManagerV1.sendMessage(this, sender, "elytra.creativee.command.help.0");
+					PluginLocaleManagerV1.sendMessage(this, sender, "elytra.creativee.command.help.1");
+					PluginLocaleManagerV1.sendMessage(this, sender, "elytra.creativee.command.help.2");
+					PluginLocaleManagerV1.sendMessage(this, sender, "elytra.creativee.command.help.3");
 					return true;
 			}
 		}
@@ -145,10 +138,5 @@ public final class Creativee extends JavaPlugin implements Listener {
 			}
 		}
 		return super.onTabComplete(sender, command, alias, args);
-	}
-
-	@EventHandler
-	public void onLangChange(SuggestedLanguageChangedEvent event) {
-		setupLocale();
 	}
 }
